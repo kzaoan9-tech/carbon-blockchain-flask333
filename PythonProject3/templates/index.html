@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>🌱 區塊鏈碳排放紀錄</title>
+  <style>
+    body { font-family: "Microsoft JhengHei", sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #aaa; padding: 8px; text-align: center; }
+    th { background-color: #f0f0f0; }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <h1>📊 碳排放交易紀錄</h1>
+    <a href="{{ url_for('add_transaction') }}">➕ 新增交易</a>
+  </div>
+
+  <table>
+    <tr>
+      <th>區塊編號</th>
+      <th>日期</th>
+      <th>機器</th>
+      <th>肥料</th>
+      <th>使用量</th>
+      <th>排放量 (kg CO₂)</th>
+    </tr>
+    {% for tx in transactions %}
+    <tr>
+      <td>{{ tx.block_index }}</td>
+      <td>{{ tx.date }}</td>
+      <td>{{ tx.machine }}</td>
+      <td>{{ tx.fertilizer }}</td>
+      <td>{{ tx.amount }}</td>
+      <td>{{ "%.2f"|format(tx.emission) }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h3>🌍 累計碳排放量：{{ "%.2f"|format(total) }} kg CO₂</h3>
+</body>
+</html>

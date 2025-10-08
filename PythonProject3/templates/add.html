@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>➕ 新增交易</title>
+  <style>
+    body { font-family: "Microsoft JhengHei", sans-serif; padding: 20px; }
+    form { max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    input, select, button { padding: 8px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>➕ 新增碳排交易</h1>
+  <form method="POST">
+    <label>機器：</label>
+    <select name="machine" required>
+      {% for m in machines %}
+      <option value="{{ m }}">{{ m }}</option>
+      {% endfor %}
+    </select>
+
+    <label>肥料：</label>
+    <input type="text" name="fertilizer" required>
+
+    <label>使用量：</label>
+    <input type="number" name="amount" step="0.1" required>
+
+    <button type="submit">送出</button>
+  </form>
+  <p><a href="{{ url_for('index') }}">⬅ 返回紀錄</a></p>
+</body>
+</html>

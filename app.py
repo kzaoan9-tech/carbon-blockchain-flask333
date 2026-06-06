@@ -587,11 +587,3 @@ if __name__ == "__main__":
 <footer class="text-center py-5 text-muted">
    <hr class="container mb-4">
    <small>© 2026 GreenChain 區塊鏈技術展示 - 分布式帳本</small><br>
-
-
-
-
-
-
-
-這是requirements.txt
